@@ -1,23 +1,23 @@
 import {File} from '@asyncapi/generator-react-sdk';
 
-import { PackageDeclaration, EnvJson } from '/Common';
+import { PackageDeclaration, EnvJson } from './Common';
 import { javaPackageToPath } from '../../../utils/String.utils';
 
-import Connection from '/Connection/index';
-import ConnectionHelper from '/ConnectionHelper/index';
-import { LoggingHelper } from '/LoggingHelper';
-import { Dockerfile } from '/Dockerfile';
-import { Classpath } from '/Classpath';
-import { Project } from '/Project';
-import { PomHelper } from '/PomHelper';
-import { Demo } from '/Demo/Demo';
-import { PubSubBase } from '/PubSubBase';
-import { ModelContract } from '/ModelContract';
-import Readme from '/Readme/index';
+import Connection from './Connection/index';
+import ConnectionHelper from './ConnectionHelper/index';
+import { LoggingHelper } from './LoggingHelper';
+import { Dockerfile } from './Dockerfile';
+import { Classpath } from './Classpath';
+import { Project } from './Project';
+import { PomHelper } from './PomHelper';
+import { Demo } from './Demo/Demo';
+import { PubSubBaseRender } from './PubSubBase/index';
+import { ModelContract } from './ModelContract';
+import Readme from './Readme/index';
 
-import { Models } from '/Files/Models';
-import { Producers } from '/Files/Producers';
-import { Consumers } from '/Files/Consumers';
+import { Models } from './Files/Models';
+import { Producers } from './Files/Producers';
+import { Consumers } from './Files/Consumers';
 
 export function RenderJava(asyncapi, channels, server, params) {
   const toRender = {};
@@ -25,7 +25,7 @@ export function RenderJava(asyncapi, channels, server, params) {
   toRender['loggingHelper'] = LoggingHelperRenderer(params);
   toRender['connectionRender'] = ConnectionRender(asyncapi, params);
   toRender['envJson'] = EnvJsonRenderer(asyncapi, params);
-  toRender['pubSubBase'] = PubSubBase(asyncapi, params);
+  toRender['pubSubBase'] = PubSubBaseRender(asyncapi, params);
   toRender['pomXml'] = PomXmlRenderer(server, params);
   toRender['demo'] = Demo(asyncapi, params);
   toRender['dockerfile'] = DockerfileRenderer();

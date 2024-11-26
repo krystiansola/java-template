@@ -22,6 +22,6 @@ function getModule({ asyncapi, params }) {
   return foundModule.module;
 }
 
-export function PubSubBase(asyncapi, params) {
+export function PubSubBaseRender(asyncapi, params) {
   return getModule({ asyncapi, params }).PubSubBase(params);
 }

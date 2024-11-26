@@ -1,4 +1,4 @@
-const testProducer = require('../components/Producer');
+const testProducer = require('../components/library/java/Producer');
 
 const path = require('path');
 const Generator = require('@asyncapi/generator');

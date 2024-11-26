@@ -1,4 +1,4 @@
-const testCommon = require('../components/Common');
+const testCommon = require('../components/library/java/Common');
 
 const path = require('path');
 const Generator = require('@asyncapi/generator');
