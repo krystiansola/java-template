@@ -17,7 +17,7 @@
 import { File } from '@asyncapi/generator-react-sdk';
 import { ImportModels, PackageDeclaration, Class, ClassConstructor } from '../Common';
 import { ProducerConstructor, SendMessage, ProducerImports, ProducerDeclaration, ProducerClose } from '../Producer/index';
-import { toJavaClassName, javaPackageToPath } from '../../utils/String.utils';
+import { toJavaClassName, javaPackageToPath } from '../../../../utils/String.utils';
 
 export function Producers(asyncapi, channels, params) {
   return channels.map((channel) => {

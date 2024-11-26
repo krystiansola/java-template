@@ -53,6 +53,24 @@ describe('kafka integration tests using the generator', () => {
     return true;
   };
 
+  const generateSpringProject = async (PACKAGE, params, asyncApiDoc, expectedFiles) => {
+    const OUTPUT_DIR = path.resolve(MAIN_TEST_RESULT_PATH, crypto.randomBytes(4).toString('hex'));
+    const PACKAGE_PATH = path.join(...PACKAGE.split('.'));
+
+    // try running the generator
+    const generator = new Generator(path.normalize('./'), OUTPUT_DIR, {
+      forceWrite: true,
+      templateParams: { ...params, package: PACKAGE }
+    });
+    await generator.generateFromFile(path.resolve('test', asyncApiDoc));
+
+    // check that the files specific to this AsyncAPI doc are generated
+    for (const file of expectedFiles) {
+      expect(existsSync(path.join(OUTPUT_DIR, `${PACKAGE_PATH}/${file}`))).toBe(true);
+    }
+    return true;
+  };
+
   it('should generate Java for a secured, encrypted Kafka', async () => {
     const verified = await generateJavaProject(
       'com.asyncapi',
@@ -193,6 +211,20 @@ describe('kafka integration tests using the generator', () => {
       [
         'props.put("security.protocol", "SASL_SSL")',
         'props.put("sasl.mechanism", "PLAIN")',
+      ]);
+    expect(verified).toBe(true);
+  });
+  
+  it('should generate server code for kafka producer with spring and KafkaTemplate', async () => {
+    const verified = await generateSpringProject(
+      'com.eem',
+      {
+        server: 'local',
+        library: 'spring'
+      },
+      'mocks/kafka-server.yaml',
+      [
+        'models/OrganizationCreated.java',
       ]);
     expect(verified).toBe(true);
   });

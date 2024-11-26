@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 
-import { createJavaArgsFromProperties } from '../utils/Types.utils';
-import { collateModelNames, getMessagePayload } from '../utils/Models.utils';
+import { createJavaArgsFromProperties } from '../../../utils/Types.utils';
+import { collateModelNames, getMessagePayload } from '../../../utils/Models.utils';
 import { MQCipherToJava } from './Connection/MQTLS';
 
 export function Class({ childrenContent, name, implementsClass, extendsClass }) {

@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 
-import { setLocalVariables, defineVariablesForProperties } from '../utils/Types.utils';
-import { getMessagePayload } from '../utils/Models.utils';
+import { setLocalVariables, defineVariablesForProperties } from '../../../utils/Types.utils';
+import { getMessagePayload } from '../../../utils/Models.utils';
 
 export function ModelConstructor({ message }) {
   // TODO: Supoort ofMany messages

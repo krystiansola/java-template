@@ -17,7 +17,7 @@
 import { File } from '@asyncapi/generator-react-sdk';
 import { PackageDeclaration, Class, ClassConstructor } from '../Common';
 import { ConsumerDeclaration, ConsumerImports, ConsumerConstructor, ReceiveMessage, ConsumerClose } from '../Consumer/index';
-import { toJavaClassName, javaPackageToPath } from '../../utils/String.utils';
+import { toJavaClassName, javaPackageToPath } from '../../../../utils/String.utils';
 
 export function Consumers(asyncapi, channels, params) {
   return channels.map((channel) => {

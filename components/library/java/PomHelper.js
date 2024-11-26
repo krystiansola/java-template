@@ -15,7 +15,7 @@
 */
 
 import { Dependency } from './XML/Dependency';
-import { resolveDependencies } from '../utils/DependencyResolver.utils';
+import { resolveDependencies } from '../../../utils/DependencyResolver.utils';
 import { render } from '@asyncapi/generator-react-sdk';
 
 export function PomHelper({ server, params }) {

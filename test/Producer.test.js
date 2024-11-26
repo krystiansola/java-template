@@ -39,6 +39,41 @@ test('Generates Connection for publisher', async () => {
   );
 });
 
+test('Generates Producers Using Spring Kafka', async () => {
+  const generateFolderName = () => {
+    return path.resolve(MAIN_TEST_RESULT_PATH, crypto.randomBytes(4).toString('hex'));
+  };
+
+  jest.setTimeout(30000);
+
+  const OUTPUT_DIR = generateFolderName();
+
+  const params = {
+    server: 'local',
+    library: 'spring'
+  };
+
+  const generator = new Generator(path.normalize('./'), OUTPUT_DIR, { forceWrite: true, templateParams: params });
+  await generator.generateFromFile(path.resolve('test', 'mocks/kafka-server.yaml'));
+
+  const producerConstructor = testProducer.ProducerConstructor({asyncapi: generator.asyncapi, params: generator.templateParams, name: 'song/released'});
+  expect(producerConstructor).toBe(`
+    super();
+    String id = null;
+    id = "Basic pub";
+
+    logger.info("Pub application is starting");
+
+    // Establish connection for producer
+    this.createConnection("song/released", id);
+
+    // Set so no JMS headers are sent.
+    ch.setTargetClient(destination);
+    producer = context.createProducer();
+`
+  );
+});
+
 // Test producer Imports function
 test('Generates all imports from path', async() => {
   const generateFolderName = () => {
