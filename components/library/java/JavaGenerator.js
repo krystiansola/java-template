@@ -1,6 +1,6 @@
 import {File} from '@asyncapi/generator-react-sdk';
 
-import { PackageDeclaration, EnvJson } from './Common';
+import { PackageDeclaration, EnvJson } from '../Common';
 import { javaPackageToPath } from '../../../utils/String.utils';
 
 import Connection from './Connection/index';

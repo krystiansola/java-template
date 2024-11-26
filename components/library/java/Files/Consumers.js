@@ -15,7 +15,7 @@
 */
 
 import { File } from '@asyncapi/generator-react-sdk';
-import { PackageDeclaration, Class, ClassConstructor } from '../Common';
+import { PackageDeclaration, Class, ClassConstructor } from '../../Common';
 import { ConsumerDeclaration, ConsumerImports, ConsumerConstructor, ReceiveMessage, ConsumerClose } from '../Consumer/index';
 import { toJavaClassName, javaPackageToPath } from '../../../../utils/String.utils';
 

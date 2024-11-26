@@ -15,12 +15,24 @@
 */
 
 import { RenderJava } from '../Components/library/java/JavaGenerator';
+import { RenderSpring } from '../Components/library/spring/SpringGenerator';
 // Import custom components from file 
+
+function determineLibrary(params, asyncapi, channels, server) {
+  switch (params.library) {
+  case 'java':
+    return RenderJava(asyncapi, channels, server, params);
+  case 'spring':
+    return RenderSpring(asyncapi, channels, server, params);
+  default:
+    return [];
+  }
+}
 
 export default function({ asyncapi, params }) {
   const channels = asyncapi.allChannels().all();
   const server = asyncapi.allServers().get(params.server);
-  const toRender = RenderJava(asyncapi, channels, server, params);
+  const toRender = determineLibrary(params, asyncapi, channels, server);
 
   // Schemas is an instance of the Map
   return Object.entries(toRender).map(([name, renderFunction]) => {
