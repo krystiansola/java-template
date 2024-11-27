@@ -18,6 +18,16 @@ import { createJavaArgsFromProperties } from '../../utils/Types.utils';
 import { collateModelNames, getMessagePayload } from '../../utils/Models.utils';
 import { MQCipherToJava } from './java/Connection/MQTLS';
 
+export function Record({className, childrenContent}) {
+  return `
+public record ${className}(
+${childrenContent}
+)
+{
+}
+`;
+}
+
 export function Class({ childrenContent, name, implementsClass, extendsClass }) {
   if (childrenContent === undefined) { 
     childrenContent = '';
@@ -59,12 +69,17 @@ export function PackageDeclaration({ path }) {
   return `
 ${javaCopyright()}
 package ${path};
-  `;
+`;
 }
 
 export function ImportDeclaration({path}) {
   return `
 import ${path};`;
+}
+
+export function AddAnnotation({name}) {
+  return `
+@${name}`;
 }
 
 export function getMqValues(url, val) {

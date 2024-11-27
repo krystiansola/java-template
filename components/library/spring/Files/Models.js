@@ -15,39 +15,35 @@
 */
 
 import { File } from '@asyncapi/generator-react-sdk';
-import { PackageDeclaration, ImportDeclaration, Class, ClassConstructor } from '../../Common';
-import { ModelClassVariables, ModelConstructor } from '../../Model';
+import {PackageDeclaration, ImportDeclaration, AddAnnotation, Record} from '../../Common';
+import {ModelRecordVariables} from '../../Model';
 import { javaPackageToPath } from '../../../../utils/String.utils';
 import { Indent, IndentationTypes } from '@asyncapi/generator-react-sdk';
-import { collateModels, getMessagePayload } from '../../../../utils/Models.utils';
+import {collateModels} from '../../../../utils/Models.utils';
 
 export function Models(asyncapi, params) {
   const models = collateModels(asyncapi);
 
   return Object.entries(models).map(([messageName, message]) => {
-    const messageNameUpperCase = messageName.charAt(0).toUpperCase() + messageName.slice(1);
-    const packagePath = javaPackageToPath(params.package);
-
-    return (
-      <File name={`${packagePath}models/${messageNameUpperCase}.java`}>
-        <PackageDeclaration path={`${params.package}.models`} />
-        <ImportDeclaration path={`${params.package}.models.ModelContract`} />
-        <ImportDeclaration path={'java.util.UUID'} />
-        <ImportDeclaration path={'com.fasterxml.jackson.annotation.JsonProperty'} />
-
-        <Class name={messageNameUpperCase}>
-          <Indent size={2} type={IndentationTypes.SPACES}>
-            <ModelClassVariables message={message}></ModelClassVariables>
-          </Indent>
-
-          <ClassConstructor name={messageNameUpperCase} properties={getMessagePayload(message).properties()}>
-            <ModelConstructor message={message}/>
-          </ClassConstructor>
-          <ClassConstructor name={messageNameUpperCase}>
-              super();
-          </ClassConstructor>
-        </Class>
-      </File>
-    );
+    return Model(messageName, message, params);
   });
+}
+
+export function Model(messageName, message, params) {
+  const messageNameUpperCase = messageName.charAt(0).toUpperCase() + messageName.slice(1);
+  const packagePath = javaPackageToPath(params.package);
+
+  console.log(messageNameUpperCase);
+  return (
+    <File name={`${packagePath}models/${messageNameUpperCase}.java`}>
+      <PackageDeclaration path={`${params.package}.models`}/>
+      <ImportDeclaration path={'lombok.Builder'}/>
+      <AddAnnotation name='Builder'/>
+      <Record className={messageNameUpperCase}>
+        <Indent size={1} type={IndentationTypes.TABS}>
+          <ModelRecordVariables message={message}></ModelRecordVariables>
+        </Indent>
+      </Record>
+    </File>
+  );
 }

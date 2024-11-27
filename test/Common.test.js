@@ -85,7 +85,7 @@ test('Generates package java from path', () => {
 * limitations under the License.
 */
 package test.package;
-  `);
+`);
 });
 
 // Test ImportDeclaration function
