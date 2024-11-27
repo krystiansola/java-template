@@ -1,4 +1,4 @@
-const testCommon = require('../components/Common');
+const testCommon = require('../components/library/Common');
 
 const path = require('path');
 const Generator = require('@asyncapi/generator');
@@ -85,7 +85,7 @@ test('Generates package java from path', () => {
 * limitations under the License.
 */
 package test.package;
-  `);
+`);
 });
 
 // Test ImportDeclaration function

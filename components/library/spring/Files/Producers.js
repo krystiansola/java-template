@@ -14,35 +14,37 @@
 * limitations under the License.
 */
 
-import { File } from '@asyncapi/generator-react-sdk';
-import { ImportModels, PackageDeclaration, Class, ClassConstructor } from '../Common';
-import { ProducerConstructor, SendMessage, ProducerImports, ProducerDeclaration, ProducerClose } from '../Producer/index';
-import { toJavaClassName, javaPackageToPath } from '../../utils/String.utils';
+import {File} from '@asyncapi/generator-react-sdk';
+import { ImportModels, PackageDeclaration, Class } from '../../Common';
+import { ProducerConstructor, SendMessage, ProducerImports, ProducerDeclaration } from '../Producer/index';
+import { toJavaClassName, javaPackageToPath } from '../../../../utils/String.utils';
 
 export function Producers(asyncapi, channels, params) {
   return channels.map((channel) => {
     if (channel.operations().filterBySend().length > 0) {
-      const name = channel.id();
+      const name = channel.address() || channel.id();
       const className = `${toJavaClassName(name)}Producer`;
       const packagePath = javaPackageToPath(params.package);
-
+      const messagesInChanel = channel.messages().all();
+      if (messagesInChanel.length !== 1) {
+        // TODO should be an error message
+        console.log('Only one message is supported');
+        return;
+      }
+      const javaClassName = toJavaClassName(messagesInChanel[0].id());
       return (
         <File name={`${packagePath}${className}.java`}>
             
           <PackageDeclaration path={params.package} />
           <ProducerImports asyncapi={asyncapi} params={params} />
           <ImportModels asyncapi={asyncapi} params={params} />
-    
-          <Class name={className} extendsClass="PubSubBase">
+
+          <Class name={className}>
             <ProducerDeclaration asyncapi={asyncapi} params={params} />
-    
-            <ClassConstructor name={className}>
-              <ProducerConstructor asyncapi={asyncapi} params={params} name={name} />
-            </ClassConstructor>
 
-            <SendMessage asyncapi={asyncapi} params={params} />
+            <ProducerConstructor asyncapi={asyncapi} params={params} className={className}  />
 
-            <ProducerClose asyncapi={asyncapi} params={params} />
+            <SendMessage asyncapi={asyncapi} params={params} topicName={name} paramClassName={javaClassName}/>
           </Class>
         </File>
       );

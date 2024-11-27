@@ -1,3 +1,6 @@
+
+export function Classpath() {
+  return `   
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="target/classes" path="Users/kieranmurphy/Desktop/code/template-3/template">
@@ -42,3 +45,5 @@
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
+`;
+}

@@ -15,8 +15,8 @@
 */
 
 import { File } from '@asyncapi/generator-react-sdk';
-import { javaPackageToPath } from '../../utils/String.utils';
-import { PackageDeclaration } from '../Common';
+import { javaPackageToPath } from '../../../../utils/String.utils';
+import { PackageDeclaration } from '../../Common';
 
 function getPubSubContent(params) {
   return `

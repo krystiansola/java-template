@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 
-import { setLocalVariables, defineVariablesForProperties } from '../utils/Types.utils';
-import { getMessagePayload } from '../utils/Models.utils';
+import {setLocalVariables, defineVariablesForProperties, asyncApiToJavaType} from '../../utils/Types.utils';
+import { getMessagePayload } from '../../utils/Models.utils';
 
 export function ModelConstructor({ message }) {
   // TODO: Supoort ofMany messages
@@ -27,6 +27,14 @@ export function ModelClassVariables({ message }) {
   const argsString = defineVariablesForProperties(getMessagePayload(message));
   
   return argsString.join(`
+`);
+}
+
+export function ModelRecordVariables({ message }) {
+  const messagePayload = getMessagePayload(message);
+  return Object.entries(messagePayload.properties()).map(([name, property]) => {
+    return `${asyncApiToJavaType(property.type(), property.format())} ${name}`;
+  }).join(`,
 `);
 }
   

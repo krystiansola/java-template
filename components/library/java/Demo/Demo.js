@@ -16,11 +16,11 @@
 
 import { DemoSubscriber } from './DemoSubscriber';
 import { DemoProducer } from './DemoProducer';
-import { javaPackageToPath, toJavaClassName } from '../../utils/String.utils';
+import { javaPackageToPath, toJavaClassName } from '../../../../utils/String.utils';
 import { File } from '@asyncapi/generator-react-sdk';
-import { createJavaConstructorArgs } from '../../utils/Types.utils';
-import { getMessagePayload } from '../../utils/Models.utils';
-import { PackageDeclaration } from '../Common';
+import { createJavaConstructorArgs } from '../../../../utils/Types.utils';
+import { getMessagePayload } from '../../../../utils/Models.utils';
+import { PackageDeclaration } from '../../Common';
 
 export function Demo(asyncapi, params) {
   const foundPubAndSub = asyncapi.allChannels().filterBy((chan) => {

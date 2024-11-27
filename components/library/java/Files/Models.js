@@ -15,11 +15,11 @@
 */
 
 import { File } from '@asyncapi/generator-react-sdk';
-import { PackageDeclaration, ImportDeclaration, Class, ClassConstructor } from '../Common';
-import { ModelClassVariables, ModelConstructor } from '../Model';
-import { javaPackageToPath } from '../../utils/String.utils';
+import { PackageDeclaration, ImportDeclaration, Class, ClassConstructor } from '../../Common';
+import { ModelClassVariables, ModelConstructor } from '../../Model';
+import { javaPackageToPath } from '../../../../utils/String.utils';
 import { Indent, IndentationTypes } from '@asyncapi/generator-react-sdk';
-import { collateModels, getMessagePayload } from '../../utils/Models.utils';
+import { collateModels, getMessagePayload } from '../../../../utils/Models.utils';
 
 export function Models(asyncapi, params) {
   const models = collateModels(asyncapi);
