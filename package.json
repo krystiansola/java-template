@@ -1,5 +1,5 @@
 {
-  "name": "@asyncapi/java-template",
+  "name": "@krystiansola/java-template",
   "version": "0.0.1",
   "description": "Java JMS template for AsyncAPI generator",
   "main": "template/index.js",
@@ -14,22 +14,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asyncapi/java-template"
+    "url": "git+https://github.com/krystiansola/java-template"
   },
   "keywords": [
     "asyncapi",
     "generator",
     "template"
   ],
-  "author": "AsyncAPI (https://github.com/asyncapi)",
+  "author": "AsyncAPI (https://github.com/krystiansola)",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/asyncapi/java-template/issues"
+    "url": "https://github.com/krystiansola/java-template/issues"
   },
-  "homepage": "https://github.com/asyncapi/java-template",
+  "homepage": "https://github.com/krystiansola/java-template",
   "dependencies": {
     "@asyncapi/generator-filters": "^2.1.0",
     "@asyncapi/generator-hooks": "^0.1.0",
