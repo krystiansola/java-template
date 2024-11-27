@@ -1,11 +1,6 @@
-import * as MQProducer from './MQProducer';
 import * as KafkaProducer from './KafkaProducer';
 
 const producerModuleMapJava = [
-  {
-    protocols: ['ibmmq', 'ibmmq-secure'],
-    module: MQProducer
-  },
   {
     protocols: ['kafka', 'kafka-secure'],
     module: KafkaProducer
@@ -22,8 +17,8 @@ function getModule({ asyncapi, params }) {
   return foundModule.module;
 }
 
-export function SendMessage({ asyncapi, params }) {
-  return getModule({ asyncapi, params }).SendMessage();
+export function SendMessage({ asyncapi, params, topicName, paramClassName }) {
+  return getModule({ asyncapi, params }).SendMessage({ topicName, paramClassName });
 }
 export function ProducerImports({ asyncapi, params }) {
   return getModule({ asyncapi, params }).ProducerImports({ params });
@@ -34,6 +29,6 @@ export function ProducerDeclaration({ asyncapi, params }) {
 export function ProducerClose({ asyncapi, params }) {
   return getModule({ asyncapi, params }).ProducerClose();
 }
-export function ProducerConstructor({ asyncapi, params, name }) {
-  return getModule({ asyncapi, params }).ProducerConstructor({ name });
+export function ProducerConstructor({ asyncapi, params, className }) {
+  return getModule({ asyncapi, params }).ProducerConstructor({ className });
 }
