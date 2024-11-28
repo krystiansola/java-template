@@ -1,0 +1,52 @@
+asyncapi: 3.0.0
+info:
+  title: Audit Log Creation
+  version: 1.0.0
+  description: "Audit Log Creation"
+
+servers:
+  local:
+    host: localhost:9092
+    protocol: kafka
+    description: The local development server
+channels:
+  aditLogCreated:
+    address: "AuditLogCreated"
+    messages:
+      auditLogCreated:
+        $ref: "#/components/messages/AuditLogCreatedMessage"
+  aditLogUpdated:
+    address: "AditLogUpdated"
+    messages:
+      auditLogCreated:
+        $ref: "#/components/messages/AuditLogCreatedMessage"
+operations:
+  aditLogUpdating:
+    action: "receive"
+    channel:
+      $ref: "#/channels/aditLogUpdated"
+    bindings:
+      kafka:
+        groupId:
+          type: string
+          enum: [ 'audit-log-consumer-2' ]
+        bindingVersion: '0.5.0'
+  auditLogCreation:
+    action: "receive"
+    channel:
+      $ref: "#/channels/aditLogCreated"
+    bindings:
+      kafka:
+        groupId:
+          type: string
+          enum: [ 'audit-log-consumer' ]
+        bindingVersion: '0.5.0'
+components:
+  messages:
+    AuditLogCreatedMessage:
+      payload:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Message of the audit log

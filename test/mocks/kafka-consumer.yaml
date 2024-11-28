@@ -1,0 +1,31 @@
+asyncapi: 3.0.0
+info:
+  title: Audit Log Creation
+  version: 1.0.0
+  description: "Audit Log Creation"
+
+servers:
+  local:
+    host: localhost:9092
+    protocol: kafka
+    description: The local development server
+channels:
+  aditLogCreated:
+    address: "AuditLogCreated"
+    messages:
+      auditLogCreated:
+        $ref: "#/components/messages/AuditLogCreatedMessage"
+operations:
+  auditLogCreation:
+    action: "receive"
+    channel:
+      $ref: "#/channels/aditLogCreated"
+components:
+  messages:
+    AuditLogCreatedMessage:
+      payload:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Message of the audit log
