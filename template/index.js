@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 
-import { RenderJava } from '../Components/library/java/JavaGenerator';
-import { RenderSpring } from '../Components/library/spring/SpringGenerator';
+import { RenderJava } from '../components/library/java/JavaGenerator';
+import { RenderSpring } from '../components/library/spring/SpringGenerator';
 // Import custom components from file 
 
 function determineLibrary(params, asyncapi, channels, server) {
