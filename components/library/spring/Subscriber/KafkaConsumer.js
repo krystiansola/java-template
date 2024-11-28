@@ -16,6 +16,8 @@
 
 export function SubscriberImports() {
   return `
+import org.springframework.kafka.annotation.KafkaListener;
+  
 import cdq.kafka.support.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,6 +38,7 @@ export function ReceiveMessage({asyncapi, className, modelName, topicName, chann
     }
   }
   return `
+@RequiredArgsConstructor
 public class ${className}
 {
     private final ${modelName}Consumer consumer;

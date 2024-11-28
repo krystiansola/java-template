@@ -173,7 +173,7 @@ package com.asyncapi;
 import cdq.kafka.support.Message;
 
 import com.asyncapi.models.AuditLogCreated;
-public interface AditLogCreatedConsumerConsumer
+public interface AditLogCreatedConsumer
 {
     void consume(Message<AuditLogCreated> payload);
 }
@@ -196,12 +196,15 @@ public interface AditLogCreatedConsumerConsumer
 */
 package com.asyncapi;
 
+import org.springframework.kafka.annotation.KafkaListener;
+  
 import cdq.kafka.support.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
 import com.asyncapi.models.AuditLogCreated;
+@RequiredArgsConstructor
 public class AditLogCreatedSubscriber
 {
     private final AuditLogCreatedConsumer consumer;
@@ -263,12 +266,15 @@ test('Generates Models for spring kafka consumer with defined operation binding 
 */
 package com.asyncapi;
 
+import org.springframework.kafka.annotation.KafkaListener;
+  
 import cdq.kafka.support.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
 import com.asyncapi.models.AuditLogCreated;
+@RequiredArgsConstructor
 public class AditLogCreatedSubscriber
 {
     private final AuditLogCreatedConsumer consumer;
@@ -331,12 +337,15 @@ test('Generates Models for spring kafka consumer with 2 channels', async () => {
 */
 package com.asyncapi;
 
+import org.springframework.kafka.annotation.KafkaListener;
+  
 import cdq.kafka.support.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
 import com.asyncapi.models.AuditLogCreated;
+@RequiredArgsConstructor
 public class AditLogCreatedSubscriber
 {
     private final AuditLogCreatedConsumer consumer;
@@ -379,12 +388,15 @@ public class AditLogCreatedSubscriber
 */
 package com.asyncapi;
 
+import org.springframework.kafka.annotation.KafkaListener;
+  
 import cdq.kafka.support.Message;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
 import com.asyncapi.models.AuditLogCreated;
+@RequiredArgsConstructor
 public class AditLogUpdatedSubscriber
 {
     private final AuditLogCreatedConsumer consumer;

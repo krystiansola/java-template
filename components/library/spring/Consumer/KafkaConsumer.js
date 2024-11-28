@@ -24,7 +24,7 @@ import cdq.kafka.support.Message;
 export function ReceiveMessage({ message, className }) {
   const id = message.id() || message.name();
   return `
-public interface ${className}Consumer
+public interface ${className}
 {
     void consume(Message<${toJavaClassName(id)}> payload);
 }
