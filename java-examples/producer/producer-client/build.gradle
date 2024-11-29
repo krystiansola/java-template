@@ -1,0 +1,43 @@
+plugins {
+    id 'example.producer.java-library-conventions'
+    id 'org.springframework.boot' version '2.7.18'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+dependencies {
+    compileOnly project(':kafka-support')
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    // add spring kafka dependency as compileOnly to build code
+    compileOnly 'org.springframework.kafka:spring-kafka'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+tasks.register("buildApiSpecWithLocalCode", Exec) {
+    it.commandLine "docker", "run",
+            "--rm", "--user=root",
+            "-v", "${project.projectDir}/../../../:/app/java-template", // the root project directory
+            "-v", "${project.projectDir}/../producer-app/src/main/resources/asyncapi.yaml:/app/asyncapi.yaml",
+            "-v", "${project.projectDir}/build/generated-sources/asyncapi:/app/out",
+            "asyncapi/cli:2.11.0", "generate",
+            "fromTemplate", "-o", "/app/out",
+            "/app/asyncapi.yaml", "/app/java-template",
+            "--force-write", "-p",
+            "server=local", "-p", "library=spring",
+            "-p", "codeType=client",
+            "-p", "package=example.producer.app"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'build/generated-sources/asyncapi'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

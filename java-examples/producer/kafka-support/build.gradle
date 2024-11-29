@@ -1,0 +1,13 @@
+plugins {
+    id 'example.producer.java-library-conventions'
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    api group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.2'
+}
+
+test {
+    useJUnitPlatform()
+}

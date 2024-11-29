@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kafka-support/producer.kafka-support.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kafka-support/producer.kafka-support.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/producer-app/producer.producer-app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/producer-app/producer.producer-app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/producer-client/producer.producer-client.main.iml" filepath="$PROJECT_DIR$/.idea/modules/producer-client/producer.producer-client.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/subscriber-app/producer.subscriber-app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/subscriber-app/producer.subscriber-app.main.iml" />
+    </modules>
+  </component>
+</project>
