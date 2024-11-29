@@ -289,7 +289,7 @@ curl --request POST \
 --header 'Content-Type: application/json' \
 --data '{
 "orderId": "some-order-id",
-"customerEmail":  "krystian.sola@gmail.com"
+"customerEmail":  "some.email@email.com"
 }'
 ```
 
