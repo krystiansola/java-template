@@ -10,7 +10,7 @@ servers:
     protocol: kafka
     description: The local development server
 channels:
-  aditLogCreated:
+  auditLogCreated:
     address: "AuditLogCreated"
     messages:
       auditLogCreated:
@@ -19,7 +19,7 @@ operations:
   auditLogCreation:
     action: "receive"
     channel:
-      $ref: "#/channels/aditLogCreated"
+      $ref: "#/channels/auditLogCreated"
 components:
   messages:
     AuditLogCreatedMessage:

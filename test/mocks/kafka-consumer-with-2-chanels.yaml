@@ -10,21 +10,21 @@ servers:
     protocol: kafka
     description: The local development server
 channels:
-  aditLogCreated:
+  auditLogCreated:
     address: "AuditLogCreated"
     messages:
       auditLogCreated:
         $ref: "#/components/messages/AuditLogCreatedMessage"
-  aditLogUpdated:
+  auditLogUpdated:
     address: "AditLogUpdated"
     messages:
       auditLogCreated:
         $ref: "#/components/messages/AuditLogCreatedMessage"
 operations:
-  aditLogUpdating:
+  auditLogUpdating:
     action: "receive"
     channel:
-      $ref: "#/channels/aditLogUpdated"
+      $ref: "#/channels/auditLogUpdated"
     bindings:
       kafka:
         groupId:
@@ -34,7 +34,7 @@ operations:
   auditLogCreation:
     action: "receive"
     channel:
-      $ref: "#/channels/aditLogCreated"
+      $ref: "#/channels/auditLogCreated"
     bindings:
       kafka:
         groupId:

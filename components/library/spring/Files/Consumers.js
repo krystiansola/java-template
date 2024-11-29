@@ -5,7 +5,13 @@ import { toJavaClassName, javaPackageToPath } from '../../../../utils/String.uti
 
 export function Consumers(asyncapi, channels, params) {
   return channels.map((channel) => {
-    if (channel.operations().filterByReceive().length > 0) {
+    let filterByReceive;
+    if (params.codeType === 'owner') {
+      filterByReceive = channel.operations().filterByReceive();
+    } else {
+      filterByReceive = channel.operations().filterBySend();
+    }
+    if (filterByReceive.length > 0) {
       const name = channel.id();
       const className = `${toJavaClassName(name)}Consumer`;
 

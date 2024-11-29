@@ -21,7 +21,13 @@ import { toJavaClassName, javaPackageToPath } from '../../../../utils/String.uti
 
 export function Producers(asyncapi, channels, params) {
   return channels.map((channel) => {
-    if (channel.operations().filterBySend().length > 0) {
+    let filterByReceive;
+    if (params.codeType === 'owner') {
+      filterByReceive = channel.operations().filterBySend();
+    } else {
+      filterByReceive = channel.operations().filterByReceive();
+    }
+    if (filterByReceive.length > 0) {
       const name = channel.address() || channel.id();
       const className = `${toJavaClassName(name)}Producer`;
       const packagePath = javaPackageToPath(params.package);

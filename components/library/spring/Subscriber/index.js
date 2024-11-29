@@ -20,6 +20,6 @@ function getModule({ asyncapi, params }) {
 export function SubscriberImports({ asyncapi, params}) {
   return getModule({ asyncapi, params }).SubscriberImports();
 }
-export function ReceiveMessage({ asyncapi, params, className, modelName, topicName, channel }) {
-  return getModule({ asyncapi, params }).ReceiveMessage({ asyncapi, className, modelName, topicName, channel });
+export function ReceiveMessage({ asyncapi, params, className, modelName, topicName, channel, consumerName }) {
+  return getModule({ asyncapi, params }).ReceiveMessage({ asyncapi, className, modelName, topicName, channel, consumerName });
 }

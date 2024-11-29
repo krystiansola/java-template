@@ -92,6 +92,11 @@
         "description": "MQ topic prefix. Used for ibmmq protocols. Default will work with dev MQ instance",
         "required": false,
         "default": "dev//"
+      },
+      "codeType": {
+        "description": "Type of code to generate. Possible values: owner, client",
+        "required": false,
+        "default": "owner"
       }
     },
     "supportedProtocols": [

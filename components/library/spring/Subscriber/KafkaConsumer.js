@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 `;
 }
 
-export function ReceiveMessage({asyncapi, className, modelName, topicName, channel }) {
+export function ReceiveMessage({asyncapi, className, modelName, topicName, channel, consumerName }) {
   const operations = asyncapi.allOperations().filterBy(operation => {
     // an operation has a required channel
     return operation.channels()[0].id() === channel.id();
@@ -41,7 +41,7 @@ export function ReceiveMessage({asyncapi, className, modelName, topicName, chann
 @RequiredArgsConstructor
 public class ${className}
 {
-    private final ${modelName}Consumer consumer;
+    private final ${consumerName} consumer;
 
     @KafkaListener(topics = "${topicName}", groupId = "${groupId}")
     public void consume(String organizationCreated)
