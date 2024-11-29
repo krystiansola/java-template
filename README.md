@@ -28,6 +28,7 @@ This template generates Java application code based from an AsyncAPI document.
 Implementations are provided for the following protocols:
 * `ibmmq` - generating Java JMS code (utilising features from the [IBM MQ AsyncAPI bindings](https://github.com/asyncapi/bindings/tree/master/ibmmq))
 * `kafka` - generating Java code  (utilising features from the [Apache Kafka AsyncAPI bindings](https://github.com/asyncapi/bindings/tree/master/kafka))
+* `kafka` with spring framework - generating Java code with spring framework (utilising features from the [Apache Kafka AsyncAPI bindings](https://github.com/asyncapi/bindings/tree/master/kafka)). Read the separate article how to use this generator in a spring project. [Kafka with Spring Framework Tutorial](./tutorials/SPRING-KAFKA.md)
 
 ## Technical requirements
 
@@ -41,6 +42,8 @@ Implementations are provided for the following protocols:
     * This is implemented using the JMS API with the correct jars, in this case ibmmq was chosen. The use of JMS allows allows the template to be extensible to other providers by providing the correct jars at the Maven stage.
 * kafka
     * This is implemented using the official client library from the Apache Kafka project.
+* kafka with spring framework
+  * This is implemented using spring.
 
 ## How to use the template
 
