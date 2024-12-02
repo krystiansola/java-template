@@ -58,7 +58,7 @@ The async api specification should be put always in the message owner component.
 Of course in option 1 we could write in the Notification Service an api specification were
 we consume the message from the Order Service. But it would mena we have to duplicate the
 structure of the order message. In addition, a developer who reads the  Notification
-Service could think he can send an event OrderCreated event he is not the owner of that message which lead to broken functionality.
+Service documentation could think it is possible to send an OrderCreated event to Notification Service. This would lead to confusion.
 
 ## Start coding with the async api specification
 
