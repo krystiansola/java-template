@@ -56,9 +56,9 @@ Notification Service, the owner of the message is now Notification Service.
 The async api specification should be put always in the message owner component. In option 1 the async api should be implemented in the Order Service. In option 2 the async api should be implemented in the Notification Service.
 
 Of course in option 1 we could write in the Notification Service an api specification were
-we consume the message from the Order Service. But it would mena we have to duplicate the
+we consume the message from the Order Service. But it would mean we have to duplicate the
 structure of the order message. In addition, a developer who reads the  Notification
-Service documentation could think it is possible to send an OrderCreated event to Notification Service. This would lead to confusion.
+Service documentation could think it is possible to send an OrderCreated event to Notification Service. This would lead to confusions .
 
 ## Start coding with the async api specification
 
@@ -297,4 +297,7 @@ A kafka event will be sent but now no consumer is listening to the event. In the
 
 # Step 3: Implement the consumer
 
-TODO :) 
+Points to clarify:
+
+- decide how generate code which has different groupId.
+- should we provide a shared library which then is added to the consumer project or should we generate the code in the consumer project?
