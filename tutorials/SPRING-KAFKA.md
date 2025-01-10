@@ -1,6 +1,6 @@
 # Java template for Spring Boot 2.7.x and 3.1.x
 
-This tutorial explains how to use the generator in an api first approach using the async api specification. Before we start coding lets understand the concept of message owner and message client. Understanding that allows us to decide which project the AsyncAPI specification should be applied to.
+This tutorial explains how to use the generator in an api first approach using the async api specification. Before we start coding lets understand the concept of message owner and message client. Understanding that, allows us to decide in which project we define the AsyncAPI specification.
 
 ## Understanding basic concept of "message owner" and "message client"
 
@@ -295,9 +295,6 @@ curl --request POST \
 
 A kafka event will be sent but now no consumer is listening to the event. In the next step we will implement the consumer.
 
-# Step 3: Implement the consumer
+# Step 3: Implement the consumer library
 
-Points to clarify:
 
-- decide how generate code which has different groupId.
-- should we provide a shared library which then is added to the consumer project or should we generate the code in the consumer project?
